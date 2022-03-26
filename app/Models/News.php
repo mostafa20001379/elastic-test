@@ -11,6 +11,7 @@ class News extends Model
         'content',
         'resource',
         'link',
-        'avatar'
+        'avatar',
+        'datetime'
     ];
 }

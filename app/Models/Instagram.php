@@ -11,6 +11,7 @@ class Instagram extends Model
         'content',
         'name',
         'thumbnail',
-        'username'
+        'username',
+        'datetime'
     ];
 }

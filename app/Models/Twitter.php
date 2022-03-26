@@ -11,6 +11,7 @@ class Twitter extends Model
         'name',
         'reviews',
         'image',
-        'avatar'
+        'avatar',
+        'datetime'
     ];
 }

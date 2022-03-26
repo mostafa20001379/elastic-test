@@ -1,0 +1,298 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Elasticsearch OpenAPI",
+        "description": "Implementation of Swagger with in Laravel",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1"
+        }
+    ],
+    "paths": {
+        "/api/elastic/show": {
+            "get": {
+                "tags": [
+                    "Elasticsearch"
+                ],
+                "summary": "Get all data from specific Index",
+                "operationId": "f75d9dfb0daa8ffa5bf2b3814b041ebd",
+                "parameters": [
+                    {
+                        "name": "platform",
+                        "in": "query",
+                        "description": "Platform",
+                        "schema": {
+                            "type": "string",
+                            "example": "instagram"
+                        }
+                    },
+                    {
+                        "name": "datetime",
+                        "in": "query",
+                        "description": "Datetime",
+                        "schema": {
+                            "type": "date",
+                            "example": "2001-01-01"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Title",
+                        "schema": {
+                            "type": "string",
+                            "example": "Hey"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "Username",
+                        "schema": {
+                            "type": "string",
+                            "example": "Adam"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name",
+                        "schema": {
+                            "type": "string",
+                            "example": "Adam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "_index": {
+                                            "type": "string",
+                                            "example": "instagram"
+                                        },
+                                        "_type": {
+                                            "type": "string",
+                                            "example": "instagram"
+                                        },
+                                        "_id": {
+                                            "type": "string",
+                                            "example": "1"
+                                        },
+                                        "_score": {
+                                            "type": "object",
+                                            "example": "{}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/elastic/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Elasticsearch"
+                ],
+                "summary": "Delete Data from a platform with id",
+                "operationId": "f3aa76e2faf1fe63a218b4e4b01ff812",
+                "parameters": [
+                    {
+                        "name": "platform",
+                        "in": "query",
+                        "description": "Platform",
+                        "schema": {
+                            "type": "string",
+                            "example": "instagram"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/notifications/my-notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "operationId": "131f9db0d60f375a665da8a8c4359fdf",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1,
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "read",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 1,
+                            "minimum": 0
+                        }
+                    },
+                    {
+                        "name": "received",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 1,
+                            "minimum": 0
+                        }
+                    },
+                    {
+                        "name": "platform",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "nullable": true
+                        }
+                    },
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "nullable": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Notifications",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "App\\Http\\Resources\\Notification\\Notification"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "App\\Http\\Requests\\Elastic\\IndexRequest": {
+                "properties": {
+                    "platform": {
+                        "type": "string",
+                        "example": "instagram"
+                    },
+                    "datetime": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2001-01-01",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Hey",
+                        "nullable": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "Adam",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Adam",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "App\\Http\\Resources\\Notification\\Notification": {
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "body": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "platform": {
+                        "type": "string"
+                    },
+                    "in_queue": {
+                        "type": "boolean"
+                    },
+                    "send_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "received_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "read_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "basic"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

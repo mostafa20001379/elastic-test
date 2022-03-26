@@ -282,7 +282,7 @@ return [
          */
         'constants' => [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
-            'DEV_HOST_URL' => env('APP_URL', 'http://elastic-test'),
+            'DEV_HOST_URL' => env('APP_URL', 'http://127.0.0.1'),
         ],
     ],
 ];

@@ -11,7 +11,7 @@ use OpenApi\Annotations as OA;
 /**
  * @OA\Info(
  *   version="1.0.0",
- *   title="Nahad Lesson Service Open Api",
+ *   title="Elasticsearch OpenAPI",
  *   description="Implementation of Swagger with in Laravel",
  * )
  *

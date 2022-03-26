@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::prefix('elastic')
+    ->group(function () {
+        Route::get('show', [\App\Http\Controllers\ElasticsearchController::class, 'index']);
+        Route::post('create', [\App\Http\Controllers\ElasticsearchController::class, 'store']);
+        Route::delete('delete', [\App\Http\Controllers\ElasticsearchController::class, 'delete']);
+    });
+
+Route::prefix('notifications')
+    ->group(function () {
+        Route::get('my-notifications', [\App\Http\Controllers\NotificationController::class, 'myNotifications']);
+    });

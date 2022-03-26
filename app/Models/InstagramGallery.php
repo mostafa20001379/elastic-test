@@ -9,7 +9,8 @@ class InstagramGallery extends Model
     public $fillable = [
         'instagram_id',
         'link',
-        'type'
+        'type',
+
     ];
 
     public function instagram() {
